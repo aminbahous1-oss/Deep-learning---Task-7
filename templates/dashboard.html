@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Dashboard – MindJournal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-link nav-back">← Back to Journal</a>
+      <span class="nav-logo">📊 Mood Dashboard</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Stats Row -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Entries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value joy-color" id="statAvgJoy">0%</div>
+        <div class="stat-label">Avg Joy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value sadness-color" id="statAvgSadness">0%</div>
+        <div class="stat-label">Avg Sadness</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statMostCommon">—</div>
+        <div class="stat-label">Most Common Mood</div>
+      </div>
+    </div>
+
+    <!-- No-data message -->
+    <div id="noDataMsg" class="no-data-card" style="display:none;">
+      <div class="no-data-icon">📓</div>
+      <h3>No entries yet</h3>
+      <p>Head back to the journal and write your first entry to see your mood trends here.</p>
+      <a href="/" class="btn btn-primary" style="display:inline-block; margin-top:1rem;">Start Journaling</a>
+    </div>
+
+    <!-- Charts Section -->
+    <div id="chartsSection">
+      <div class="charts-grid">
+        <!-- Line Chart -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Emotion Trends (Last 14 Entries)</h2>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Average Emotion Distribution</h2>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Entries -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Recent Entries</h2>
+        </div>
+        <div id="recentEntries" class="recent-entries"></div>
+      </div>
+
+      <!-- Clear Data Button -->
+      <div class="clear-section">
+        <button id="clearBtn" class="btn btn-danger">🗑 Clear All Data</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

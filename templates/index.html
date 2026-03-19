@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindJournal – Smart Mental Health Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="nav-logo">🧠 MindJournal</span>
+      <a href="/dashboard" class="nav-link">View Trends →</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Today's Entry</h2>
+            <span class="card-date" id="entryDate"></span>
+          </div>
+
+          <textarea
+            id="journalEntry"
+            class="journal-textarea"
+            placeholder="How are you feeling today? You can type or use the microphone..."
+          ></textarea>
+
+          <div class="btn-row">
+            <button id="micBtn" class="btn btn-secondary">
+              🎤 Start Recording
+            </button>
+            <button id="captureBtn" class="btn btn-secondary">
+              📸 Capture Mood
+            </button>
+          </div>
+
+          <button id="analyzeBtn" class="btn btn-primary btn-full">
+            Analyze Entry
+          </button>
+
+          <div id="status" class="status-msg"></div>
+
+          <!-- Mock data notice (hidden by default) -->
+          <div id="mockNotice" class="mock-notice" style="display:none;">
+            ⚠️ Using demo data — add Watson API key to enable real analysis
+          </div>
+        </div>
+
+        <!-- Text Analysis Results -->
+        <div class="card" id="analysisCard" style="display:none;">
+          <div class="card-header">
+            <h2 class="card-title">Text Analysis</h2>
+          </div>
+          <div id="emotionBars" class="emotion-bars"></div>
+          <div id="sentimentResult" class="sentiment-result"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <!-- Webcam Card -->
+        <div class="card webcam-card">
+          <div class="card-header">
+            <h2 class="card-title">Webcam</h2>
+          </div>
+          <div class="video-wrapper">
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+          </div>
+        </div>
+
+        <!-- Face Emotion Card -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Face Emotion</h2>
+          </div>
+          <div id="faceResult" class="face-result">
+            <p class="placeholder-text">Click "📸 Capture Mood" to detect your facial expression.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script src="/static/js/face.js"></script>
+  <script src="/static/js/journal.js"></script>
+</body>
+</html>
