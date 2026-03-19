@@ -2,9 +2,6 @@
 .env
 ibm-credentials.env
 
-# IDE internal files
-.claude/
-
 # Python
 __pycache__/
 *.pyc
